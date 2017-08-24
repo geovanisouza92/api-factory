@@ -20,6 +20,6 @@ message ListResponse {
   repeated Resource resources = 1;
 }
 
-service DatabaseService {
+service Database {
   rpc List(ListRequest) returns (ListResponse);
 }

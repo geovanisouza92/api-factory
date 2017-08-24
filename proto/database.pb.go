@@ -124,64 +124,64 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for DatabaseService service
+// Client API for Database service
 
-type DatabaseServiceClient interface {
+type DatabaseClient interface {
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 }
 
-type databaseServiceClient struct {
+type databaseClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewDatabaseServiceClient(cc *grpc.ClientConn) DatabaseServiceClient {
-	return &databaseServiceClient{cc}
+func NewDatabaseClient(cc *grpc.ClientConn) DatabaseClient {
+	return &databaseClient{cc}
 }
 
-func (c *databaseServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
+func (c *databaseClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
-	err := grpc.Invoke(ctx, "/proto.DatabaseService/List", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/proto.Database/List", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for DatabaseService service
+// Server API for Database service
 
-type DatabaseServiceServer interface {
+type DatabaseServer interface {
 	List(context.Context, *ListRequest) (*ListResponse, error)
 }
 
-func RegisterDatabaseServiceServer(s *grpc.Server, srv DatabaseServiceServer) {
-	s.RegisterService(&_DatabaseService_serviceDesc, srv)
+func RegisterDatabaseServer(s *grpc.Server, srv DatabaseServer) {
+	s.RegisterService(&_Database_serviceDesc, srv)
 }
 
-func _DatabaseService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Database_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DatabaseServiceServer).List(ctx, in)
+		return srv.(DatabaseServer).List(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.DatabaseService/List",
+		FullMethod: "/proto.Database/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatabaseServiceServer).List(ctx, req.(*ListRequest))
+		return srv.(DatabaseServer).List(ctx, req.(*ListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _DatabaseService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.DatabaseService",
-	HandlerType: (*DatabaseServiceServer)(nil),
+var _Database_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.Database",
+	HandlerType: (*DatabaseServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "List",
-			Handler:    _DatabaseService_List_Handler,
+			Handler:    _Database_List_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -191,7 +191,7 @@ var _DatabaseService_serviceDesc = grpc.ServiceDesc{
 func init() { proto1.RegisterFile("proto/database.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 248 bytes of a gzipped FileDescriptorProto
+	// 241 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x29, 0x28, 0xca, 0x2f,
 	0xc9, 0xd7, 0x4f, 0x49, 0x2c, 0x49, 0x4c, 0x4a, 0x2c, 0x4e, 0xd5, 0x03, 0x73, 0x85, 0x58, 0xc1,
 	0x94, 0x52, 0x33, 0x23, 0x17, 0x47, 0x50, 0x6a, 0x71, 0x7e, 0x69, 0x51, 0x72, 0xaa, 0x90, 0x10,
@@ -204,8 +204,8 @@ var fileDescriptor0 = []byte{
 	0xf9, 0x3b, 0x0b, 0x30, 0x2b, 0xf1, 0x72, 0x71, 0xfb, 0x64, 0x16, 0x97, 0x04, 0xa5, 0x16, 0x96,
 	0xa6, 0x16, 0x97, 0x28, 0xd9, 0x72, 0xf1, 0x40, 0xb8, 0xc5, 0x05, 0xf9, 0x79, 0xc5, 0xa9, 0x42,
 	0xba, 0x5c, 0x9c, 0x45, 0x50, 0x0b, 0x8b, 0x25, 0x18, 0x15, 0x98, 0x35, 0xb8, 0x8d, 0xf8, 0xd1,
-	0x1c, 0x12, 0x84, 0x50, 0x61, 0xe4, 0xc4, 0xc5, 0xef, 0x02, 0xf5, 0x6c, 0x70, 0x6a, 0x51, 0x59,
-	0x66, 0x72, 0xaa, 0x90, 0x3e, 0x17, 0x0b, 0xc8, 0x44, 0x21, 0x21, 0xa8, 0x36, 0x24, 0xdb, 0xa4,
-	0x84, 0x51, 0xc4, 0x20, 0x56, 0x26, 0xb1, 0x81, 0xc5, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff,
-	0xd3, 0xde, 0x85, 0x6d, 0x3d, 0x01, 0x00, 0x00,
+	0x1c, 0x12, 0x84, 0x50, 0x61, 0x64, 0xcd, 0xc5, 0xe1, 0x02, 0xf5, 0xac, 0x90, 0x3e, 0x17, 0x0b,
+	0xc8, 0x28, 0x21, 0x21, 0xa8, 0x7a, 0x24, 0x6b, 0xa4, 0x84, 0x51, 0xc4, 0x20, 0x76, 0x25, 0xb1,
+	0x81, 0xc5, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0x05, 0x6c, 0x7d, 0x6b, 0x36, 0x01, 0x00,
+	0x00,
 }

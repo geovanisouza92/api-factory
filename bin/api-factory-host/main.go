@@ -4,35 +4,29 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"os/exec"
 
 	goPlugin "github.com/hashicorp/go-plugin"
 
+	"github.com/geovanisouza92/api-factory/database"
 	"github.com/geovanisouza92/api-factory/plugin"
 )
 
 func main() {
-	pluginProcess := goPlugin.NewClient(&goPlugin.ClientConfig{
-		HandshakeConfig:  plugin.HandshakeConfig,
-		Plugins:          plugin.PluginMap,
-		Cmd:              exec.Command("sh", "-c", os.Getenv("DATABASE_PLUGIN")),
-		AllowedProtocols: []goPlugin.Protocol{goPlugin.ProtocolGRPC},
-	})
-	defer pluginProcess.Kill()
+	pluginClient := goPlugin.NewClient(plugin.ClientConfig("foo bar"))
 
-	client, err := pluginProcess.Client()
+	protocolClient, err := pluginClient.Client()
 	if err != nil {
 		fmt.Println("Error:", err.Error())
 		os.Exit(1)
 	}
 
-	rawService, err := client.Dispense("database")
+	databaseServicePlugin, err := protocolClient.Dispense("database")
 	if err != nil {
 		fmt.Println("Error:", err.Error())
 		os.Exit(1)
 	}
 
-	databaseService := rawService.(plugin.DatabaseService)
+	databaseService := databaseServicePlugin.(database.Service)
 	res, err := databaseService.List()
 	if err != nil {
 		fmt.Println("Error:", err.Error())
