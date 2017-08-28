@@ -1,20 +1,14 @@
 package main
 
 import (
-	"github.com/geovanisouza92/api-factory/database"
+	"github.com/geovanisouza92/api-factory/apifactory"
 	"github.com/geovanisouza92/api-factory/plugin"
 )
 
 func main() {
 	plugin.Serve(&plugin.ServeOpts{
-		DatabaseFunc: func() database.Service {
-			return &PostgreSQLDatabaseService{}
+		AnalyticsProviderFunc: func() apifactory.AnalyticsProvider {
+			return nil
 		},
 	})
-}
-
-type PostgreSQLDatabaseService struct{}
-
-func (s *PostgreSQLDatabaseService) List() ([]*database.Resource, error) {
-	return []*database.Resource{}, nil
 }

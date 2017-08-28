@@ -8,10 +8,13 @@ import (
 
 func ClientConfig(cmd string) *plugin.ClientConfig {
 	return &plugin.ClientConfig{
-		Cmd:              exec.Command(cmd),
-		HandshakeConfig:  HandshakeConfig,
+		HandshakeConfig: HandshakeConfig,
+		Plugins:         PluginMap,
+		Cmd:             exec.Command(cmd),
+		// TODO: ReattachConfig ou SecureConfig ?
+		// TODO: TLS
 		Managed:          true,
-		Plugins:          PluginMap,
 		AllowedProtocols: []plugin.Protocol{plugin.ProtocolGRPC},
+		// TODO: Logger
 	}
 }
