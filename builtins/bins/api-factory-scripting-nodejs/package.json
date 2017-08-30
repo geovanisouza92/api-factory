@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "docker build -t api-factory-scripting-nodejs .",
-    "update-proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./proto/ --grpc_out=./proto/ --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ../../../apifactory/proto/ ../../../apifactory/proto/*.proto",
+    "update-proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./proto/ --grpc_out=./proto/ --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ../../../plugin/proto/ ../../../plugin/proto/*.proto",
     "start": "node index.js"
   }
 }
