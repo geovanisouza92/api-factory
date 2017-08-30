@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "empty.proto";
+
+package proto;
+
+service ScriptingProvider {
+    rpc Run(Empty) returns (Empty);
+}

@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/geovanisouza92/api-factory/apifactory"
-	"github.com/geovanisouza92/api-factory/apifactory/proto"
+	"github.com/geovanisouza92/api-factory/plugin/proto"
 )
 
 type AuthorizationProviderPlugin struct {

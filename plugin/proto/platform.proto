@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto;
+
+message Values {
+    repeated string value = 1;
+}
+
+message Response {
+    int32 status_code = 1;
+    map<string, Values> headers = 2;
+    bytes body = 3;
+}
+
+message GetRequest {
+    string uri = 1;
+    map<string, Values> headers = 2;
+}
+
+message PutRequest {
+    string uri = 1;
+    map<string, Values> headers = 2;
+    bytes body = 3;
+}
+
+message PostRequest {
+    string uri = 1;
+    map<string, Values> headers = 2;
+    bytes body = 3;
+}
+
+message PatchRequest {
+    string uri = 1;
+    map<string, Values> headers = 2;
+    bytes body = 3;
+}
+
+message DeleteRequest {
+    string uri = 1;
+    map<string, Values> headers = 2;
+}
+
+service Api {
+    rpc Get(GetRequest) returns (Response);
+    rpc Put(PutRequest) returns (Response);
+    rpc Post(PostRequest) returns (Response);
+    rpc Patch(PatchRequest) returns (Response);
+    rpc Delete(DeleteRequest) returns (Response);
+}

@@ -1,3 +1,5 @@
 package apifactory
 
-type ScriptingProvider interface{}
+type ScriptingProvider interface {
+	Run()
+}

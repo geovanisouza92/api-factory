@@ -1,0 +1,18 @@
+{
+  "name": "api-factory-scripting-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js scripting plugin for API Factory",
+  "main": "index.js",
+  "license": "ISC",
+  "author": "",
+  "dependencies": {
+    "google-protobuf": "^3.4.0",
+    "grpc": "^1.4.1",
+    "vm2": "^3.4.6"
+  },
+  "scripts": {
+    "build": "docker build -t api-factory-scripting-nodejs .",
+    "update-proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./proto/ --grpc_out=./proto/ --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ../../../apifactory/proto/ ../../../apifactory/proto/*.proto",
+    "start": "node index.js"
+  }
+}
