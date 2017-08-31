@@ -13,19 +13,17 @@ var HandshakeConfig = plugin.HandshakeConfig{
 }
 
 type ServeOpts struct {
-	AnalyticsProviderFunc      AnalyticsProviderFunc
+	TracingProviderFunc        TracingProviderFunc
 	AuthenticationProviderFunc AuthenticationProviderFunc
 	AuthorizationProviderFunc  AuthorizationProviderFunc
-	LoggingProviderFunc        LoggingProviderFunc
 	ScriptingProviderFunc      ScriptingProviderFunc
 	ServiceProviderFunc        ServiceProviderFunc
 	TrafficControlProviderFunc TrafficControlProviderFunc
 }
 
-type AnalyticsProviderFunc func() apifactory.AnalyticsProvider
+type TracingProviderFunc func() apifactory.TracingProvider
 type AuthenticationProviderFunc func() apifactory.AuthenticationProvider
 type AuthorizationProviderFunc func() apifactory.AuthorizationProvider
-type LoggingProviderFunc func() apifactory.LoggingProvider
 type ScriptingProviderFunc func() apifactory.ScriptingProvider
 type ServiceProviderFunc func() apifactory.ServiceProvider
 type TrafficControlProviderFunc func() apifactory.TrafficControlProvider
@@ -40,12 +38,11 @@ func Serve(opts *ServeOpts) {
 
 func makePluginMapFrom(opts *ServeOpts) map[string]plugin.Plugin {
 	return map[string]plugin.Plugin{
-		"analytics":       &AnalyticsProviderPlugin{F: opts.AnalyticsProviderFunc},
 		"authentication":  &AuthenticationProviderPlugin{F: opts.AuthenticationProviderFunc},
 		"authorization":   &AuthorizationProviderPlugin{F: opts.AuthorizationProviderFunc},
-		"logging":         &LoggingProviderPlugin{F: opts.LoggingProviderFunc},
 		"scripting":       &ScriptingProviderPlugin{F: opts.ScriptingProviderFunc},
 		"service":         &ServiceProviderPlugin{F: opts.ServiceProviderFunc},
+		"tracing":         &TracingProviderPlugin{F: opts.TracingProviderFunc},
 		"traffic_control": &TrafficControlProviderPlugin{F: opts.TrafficControlProviderFunc},
 	}
 }

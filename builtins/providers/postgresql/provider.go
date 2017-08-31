@@ -19,5 +19,10 @@ func Provider() apifactory.ServiceProvider {
 			// "_view": resourceView(),
 			// "_stored_proc": resourceStoredProc(),
 		},
+		ConfigureFunc: providerConfigure,
 	}
+}
+
+func providerConfigure(d *helper.ResourceData) (interface{}, error) {
+	return nil, nil
 }

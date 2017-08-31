@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package proto;
+
+import "empty.proto";
+
+service TracingProvider {
+    rpc Send(TracingEvent) returns (Empty);
+}
+
+message TracingEvent {
+    string request_id  = 1; // User? %u
+	string scheme      = 2;
+	string host        = 3; // %h
+	string method      = 4; // %r
+	string request_uri = 5; // %r
+	string proto       = 6; // %r
+	string remote_addr = 7; // %l
+	int32 status       = 8;    // %s
+	int32 bytes        = 9;    // %b
+	int64 duration     = 10;
+	// TODO: Time // %t
+}

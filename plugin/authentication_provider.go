@@ -24,11 +24,11 @@ func (*AuthenticationProviderPlugin) Server(*plugin.MuxBroker) (interface{}, err
 }
 
 func (p *AuthenticationProviderPlugin) GRPCClient(c *grpc.ClientConn) (interface{}, error) {
-	return &AuthenticationProvider{client: proto.NewAnalyticsProviderClient(c)}, nil
+	return &AuthenticationProvider{client: proto.NewAuthenticationProviderClient(c)}, nil
 }
 
 func (p *AuthenticationProviderPlugin) GRPCServer(s *grpc.Server) error {
-	proto.RegisterAnalyticsProviderServer(s, &AuthenticationProviderServer{Impl: p.F()})
+	proto.RegisterAuthenticationProviderServer(s, &AuthenticationProviderServer{Impl: p.F()})
 	return nil
 }
 

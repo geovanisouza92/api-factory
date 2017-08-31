@@ -6,5 +6,3 @@ type ServiceProvider struct {
 	Doc           *Doc
 	ConfigureFunc ConfigureFunc
 }
-
-type ConfigureFunc func(*ResourceData) (interface{}, error)
