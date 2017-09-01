@@ -8,16 +8,16 @@ import (
 func Provider() apifactory.TracingProvider {
 	return &helper.TracingProvider{
 		Schema:        map[string]*helper.Schema{},
-		ConfigureFunc: configureTracing,
-		SendFunc:      providerSend,
+		ConfigureFunc: configureFunc,
+		SendFunc:      sendFunc,
 	}
 }
 
-func configureTracing(d *helper.ResourceData) (interface{}, error) {
-	// TODO: Return `c` as an opentracing client/instance
+func configureFunc(c *apifactory.ProviderConfig) (interface{}, error) {
+	// TODO: Return `meta` as an opentracing client/instance
 	return nil, nil
 }
 
-func providerSend(ev apifactory.TracingEvent, c interface{}) {
-	// TODO: Use `c` to send `ev`
+func sendFunc(ev apifactory.TracingEvent, meta interface{}) {
+	// TODO: Use `meta` to send `ev`
 }

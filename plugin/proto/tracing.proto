@@ -3,8 +3,11 @@ syntax = "proto3";
 package proto;
 
 import "empty.proto";
+import "error.proto";
+import "provider_config.proto";
 
 service TracingProvider {
+	rpc Configure(ProviderConfig) returns (Error);
     rpc Send(TracingEvent) returns (Empty);
 }
 

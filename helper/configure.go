@@ -1,3 +1,7 @@
 package helper
 
-type ConfigureFunc func(*ResourceData) (interface{}, error)
+import (
+	"github.com/geovanisouza92/api-factory/apifactory"
+)
+
+type ConfigureFunc func(*apifactory.ProviderConfig) (interface{}, error)

@@ -1,6 +1,7 @@
 package apifactory
 
 type TracingProvider interface {
+	Configure(*ProviderConfig) error
 	Send(TracingEvent)
 }
 

@@ -39,6 +39,15 @@ type TracingProvider struct {
 
 // TODO: TracingProvider deve implementar apifactory.TracingProvider
 
+func (c *TracingProvider) Configure(conf *apifactory.ProviderConfig) error {
+	config := &proto.ProviderConfig{}
+	_, err := c.client.Configure(context.Background(), config)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (c *TracingProvider) Send(ev apifactory.TracingEvent) {
 	event := &proto.TracingEvent{
 		RequestId:  ev.RequestID,
@@ -63,6 +72,15 @@ type TracingProviderServer struct {
 }
 
 // TODO: TracingProviderServer deve implementar proto.TracingProviderServer
+
+func (s *TracingProviderServer) Configure(ctx context.Context, c *proto.ProviderConfig) (*proto.Error, error) {
+	config := &apifactory.ProviderConfig{}
+	err := s.impl.Configure(config)
+	if err != nil {
+		return &proto.Error{}, err
+	}
+	return &proto.Error{}, nil
+}
 
 func (s *TracingProviderServer) Send(ctx context.Context, ev *proto.TracingEvent) (*proto.Empty, error) {
 	event := apifactory.TracingEvent{

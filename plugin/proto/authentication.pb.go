@@ -8,8 +8,10 @@ It is generated from these files:
 	authentication.proto
 	authorization.proto
 	empty.proto
+	error.proto
 	logging.proto
 	platform.proto
+	provider_config.proto
 	scripting.proto
 	service.proto
 	tracing.proto
@@ -17,6 +19,7 @@ It is generated from these files:
 
 It has these top-level messages:
 	Empty
+	Error
 	Values
 	Response
 	GetRequest
@@ -24,6 +27,7 @@ It has these top-level messages:
 	PostRequest
 	PatchRequest
 	DeleteRequest
+	ProviderConfig
 	TracingEvent
 */
 package proto

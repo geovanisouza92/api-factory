@@ -24,7 +24,7 @@ type Values struct {
 func (m *Values) Reset()                    { *m = Values{} }
 func (m *Values) String() string            { return proto1.CompactTextString(m) }
 func (*Values) ProtoMessage()               {}
-func (*Values) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (*Values) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
 
 func (m *Values) GetValue() []string {
 	if m != nil {
@@ -42,7 +42,7 @@ type Response struct {
 func (m *Response) Reset()                    { *m = Response{} }
 func (m *Response) String() string            { return proto1.CompactTextString(m) }
 func (*Response) ProtoMessage()               {}
-func (*Response) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
+func (*Response) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{1} }
 
 func (m *Response) GetStatusCode() int32 {
 	if m != nil {
@@ -73,7 +73,7 @@ type GetRequest struct {
 func (m *GetRequest) Reset()                    { *m = GetRequest{} }
 func (m *GetRequest) String() string            { return proto1.CompactTextString(m) }
 func (*GetRequest) ProtoMessage()               {}
-func (*GetRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2} }
+func (*GetRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{2} }
 
 func (m *GetRequest) GetUri() string {
 	if m != nil {
@@ -98,7 +98,7 @@ type PutRequest struct {
 func (m *PutRequest) Reset()                    { *m = PutRequest{} }
 func (m *PutRequest) String() string            { return proto1.CompactTextString(m) }
 func (*PutRequest) ProtoMessage()               {}
-func (*PutRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{3} }
+func (*PutRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{3} }
 
 func (m *PutRequest) GetUri() string {
 	if m != nil {
@@ -130,7 +130,7 @@ type PostRequest struct {
 func (m *PostRequest) Reset()                    { *m = PostRequest{} }
 func (m *PostRequest) String() string            { return proto1.CompactTextString(m) }
 func (*PostRequest) ProtoMessage()               {}
-func (*PostRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{4} }
+func (*PostRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{4} }
 
 func (m *PostRequest) GetUri() string {
 	if m != nil {
@@ -162,7 +162,7 @@ type PatchRequest struct {
 func (m *PatchRequest) Reset()                    { *m = PatchRequest{} }
 func (m *PatchRequest) String() string            { return proto1.CompactTextString(m) }
 func (*PatchRequest) ProtoMessage()               {}
-func (*PatchRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{5} }
+func (*PatchRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{5} }
 
 func (m *PatchRequest) GetUri() string {
 	if m != nil {
@@ -193,7 +193,7 @@ type DeleteRequest struct {
 func (m *DeleteRequest) Reset()                    { *m = DeleteRequest{} }
 func (m *DeleteRequest) String() string            { return proto1.CompactTextString(m) }
 func (*DeleteRequest) ProtoMessage()               {}
-func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{6} }
+func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{6} }
 
 func (m *DeleteRequest) GetUri() string {
 	if m != nil {
@@ -423,9 +423,9 @@ var _Api_serviceDesc = grpc.ServiceDesc{
 	Metadata: "platform.proto",
 }
 
-func init() { proto1.RegisterFile("platform.proto", fileDescriptor4) }
+func init() { proto1.RegisterFile("platform.proto", fileDescriptor5) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor5 = []byte{
 	// 393 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x94, 0xcd, 0x4e, 0xc2, 0x40,
 	0x10, 0xc7, 0xb3, 0x94, 0xa2, 0x4c, 0xc1, 0x8f, 0x91, 0x03, 0x21, 0x06, 0x2a, 0x5e, 0x6a, 0x8c,
